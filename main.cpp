@@ -1,12 +1,11 @@
 #include <iostream>
-#include <string.h>
 #include "header.h"
 using namespace std;
 
 
 int main(int argc, char * argv[])
 {
-    argc = 1;
+    argc = 5;
     /*
     if(argc < 2)
     {
@@ -16,9 +15,9 @@ int main(int argc, char * argv[])
     */
     //int count_ssid = argc;
     int channel_array[argc];
-    char hw_addr[argc][len_MacAddr];
-
+    char hw_addr[argc][hw_addr_len];
 
     makemac(argc,channel_array, hw_addr);
-    //send_beacon();
+    send_beacon(argc, channel_array, hw_addr);
+
 }
