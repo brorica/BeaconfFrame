@@ -1,10 +1,6 @@
 #include <iostream>
-#include <time.h>
-#include <stdlib.h>
 #include "header.h"
 using namespace std;
-// 1 4 7 9 12
-//01:34:67:90:23:56  // 2 5 8 11 14
 
 #define random_Addr                switch(temp_addr%16) \
 {   \
@@ -27,15 +23,12 @@ using namespace std;
 }   \
 
 
-int makemac(int count_ssid,int channel_array[],char(*hw_addr)[hw_addr_len])
+int makemac(int count_ssid, char(*hw_addr)[hw_addr_len])
 {
     int i=0,j=0;
     int temp_addr;
-
     srand(time(NULL));
-    // associate channel
-    for(i=0;i<count_ssid;i++)
-        channel_array[i] = rand()%16;
+
 
    // associate random Mac_Addr
    for(i=0;i<count_ssid;i++)
@@ -54,8 +47,6 @@ int makemac(int count_ssid,int channel_array[],char(*hw_addr)[hw_addr_len])
        }
        hw_addr[i][17] = '\0';
    }
-   for(i=0;i<count_ssid;i++)
-       cout << hw_addr[i] << endl;
 
     return 0;
 }
