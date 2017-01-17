@@ -21,7 +21,7 @@ int send_beacon(int argc, char(*hw_addr)[hw_addr_len], char * argv[])
 
     // Let's add an ssid option
     for(i=1; i <=argc; i++)
-        beacon[i-1].ssid(argv[i]);
+        beacon[i-1].ssid(argv[i+1]);
 
     // Make this a broadcast frame. Note that Dot11::BROADCAST
     // is just the same as "ff:ff:ff:ff:ff:ff"
@@ -49,10 +49,8 @@ int send_beacon(int argc, char(*hw_addr)[hw_addr_len], char * argv[])
     while(1)
     {
         for(i=0; i<argc; i++)
-        {
-            sender.send(radio[i], "wlan1");    // set ur wireless LAN Card!
-            usleep(10);
-        }
+            sender.send(radio[i], argv[1]);    // set ur wireless LAN Card!
+        sleep(0.1);
     }
     return 0;
 }
